@@ -1,0 +1,5 @@
+# Ignore Python env at root level
+env/
+venv/
+.venv/
+ENV/
