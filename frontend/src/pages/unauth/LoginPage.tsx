@@ -60,6 +60,7 @@ const LoginPage = () => {
 
       const result = await loginUser({ username, password }).unwrap();
 
+      // Now the login response includes user details, so we can set everything at once
       dispatch(
         setCredentials({
           user: result.user,
@@ -72,11 +73,13 @@ const LoginPage = () => {
     } catch (err: any) {
       dispatch(
         setError(
-          err?.data?.detail ||
-            err?.data?.error ||
+          err?.data?.error ||
+            err?.data?.detail ||
             "Login failed. Please try again."
         )
       );
+    } finally {
+      dispatch(setLoading(false));
     }
   };
 

@@ -42,6 +42,13 @@ export const userApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    getCurrentUser: builder.query<any, void>({
+      query: () => ({
+        url: `${USERS_URL}/me/`,
+        method: "GET",
+      }),
+      providesTags: ["User"],
+    }),
   }),
 });
 
@@ -50,4 +57,5 @@ export const {
   useRegisterUserMutation,
   useLogoutUserMutation,
   useRefreshTokenMutation,
+  useGetCurrentUserQuery,
 } = userApiSlice;

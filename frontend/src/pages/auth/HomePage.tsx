@@ -10,7 +10,9 @@ const HomePage = () => {
   const navigate = useNavigate();
   const [logoutUserAPI] = useLogoutUserMutation();
 
-  const { userDetails } = useSelector((state: RootState) => state.authReducer);
+  const { userDetails, userInfo } = useSelector(
+    (state: RootState) => state.authReducer
+  );
 
   const handleLogout = async () => {
     try {
